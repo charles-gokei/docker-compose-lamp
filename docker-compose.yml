@@ -1,0 +1,7 @@
+services:
+  webserver:
+    build:
+      context: .
+    container_name: eng_rev-php8.1
+    ports:
+      - 80:80
