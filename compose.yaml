@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  webserver:
+    build:
+      context: ./bin/php81
+    container_name: "eng-rev-php81"
+    restart: "always"
+    ports:
+      - "81:80"
+    volumes:
+      - ./www:/var/www/html:rw
+
