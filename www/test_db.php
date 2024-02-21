@@ -1,7 +1,7 @@
 <?php
 
 try {
-  $link = new mysqli('database','root','docker');
+  $link = new mysqli('database','root',$_ENV['MYSQL_ROOT_PASSWORD']);
 
   echo 'Success: A proper connection to MYSQL was made! '.
     'The docker database is great.'.PHP_EOL;
