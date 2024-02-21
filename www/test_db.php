@@ -1,17 +1,20 @@
 <?php
 
-$link = mysqli_connect('database','root','docker',null);
+try {
+  $link = new mysqli('database','root','docker');
 
-if(!$link) {
+  echo 'Success: A proper connection to MYSQL was made! '.
+    'The docker database is great.'.PHP_EOL;
+
+  $link->close();
+
+} catch (mysqli_sql_exception $e) {
   echo <<<MESSAGE
   Error: Unable to connect to MySQL
-  Debugging errno: mysqli_connect_errno()
-  Debugging error: mysqli_connect_error()
+  Debugging errno: {$e->getCode()} </br>
+  Debugging error: {$e->getMessage()} </br>
   MESSAGE;
   exit;
+
 }
-
-echo "Success: A proper connection to MYSQL was made! The docker database is great.".PHP_EOL;
-
-mysqli_close($link);
 
