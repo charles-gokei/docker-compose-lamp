@@ -14,28 +14,42 @@
      </div>
     </header>
     <section class="section">
-      <header class='title'><h3>Environment</h3></header>
-      <ul>
-        <li><?= apache_get_version() ?></li>
-        <li>PHP <?= phpversion() ?></li>
-        <li><?php
-          try {
-            $link = new mysqli('database','root',$_ENV['MYSQL_ROOT_PASSWORD']);
-            echo printf('MySQL Server %s',$link->get_server_info());
-          } catch (mysqli_sql_exception $e) {
-            echo printf('MySQL connection failed: %s', $e->getMessage());
-          }
-        ?></li>
-      </ul>
-    </section>
-    <section class="section">
-      <header class='title'><h3>Quick links</h3></header>
-      <ul>
-        <li><a href="/phpinfo.php">phpinfo()</a></li>
-        <li><a href="http://localhost:8081">phpMyAdmin</a></li>
-        <li><a href="/test_db.php">Test DB Connection with mysqli</a></li>
-        <li><a href="/test_db_pdo.php">Test DB Connection with PDO</a></li>
-      </ul>
+      <div class="columns">
+        <div class="column">
+          <header class='title has-text-centered'>
+            <h3 class="has-text-weight-semibold">Environment</h3>
+          </header>
+          <hr>
+          <div class="content">
+            <ul>
+              <li><?= apache_get_version() ?></li>
+              <li>PHP <?= phpversion() ?></li>
+              <li><?php
+                try {
+                  $link = new mysqli('database','root',$_ENV['MYSQL_ROOT_PASSWORD']);
+                  echo printf('MySQL Server %s',$link->get_server_info());
+                } catch (mysqli_sql_exception $e) {
+                  echo printf('MySQL connection failed: %s', $e->getMessage());
+                }
+              ?></li>
+            </ul>
+          </div>
+        </div>
+        <div class="column">
+          <header class='title has-text-centered'>
+            <h3 class='has-text-weight-semibold'>Quick links</h3>
+          </header>
+          <hr>
+          <div class="content">
+            <ul>
+              <li><a href="/phpinfo.php">phpinfo()</a></li>
+              <li><a href="http://localhost:8081">phpMyAdmin</a></li>
+              <li><a href="/test_db.php">Test DB Connection with mysqli</a></li>
+              <li><a href="/test_db_pdo.php">Test DB Connection with PDO</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </section>
   </body>
 </html>
